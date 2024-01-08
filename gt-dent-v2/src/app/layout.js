@@ -1,5 +1,3 @@
-import './globals.css'
-
 export const metadata = {
   title: 'GT Dent',
   description: 'An app by Diego Gtz',

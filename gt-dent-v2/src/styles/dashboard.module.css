@@ -1,0 +1,16 @@
+.main {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: min-content min-content 1fr;
+
+  overflow: hidden;
+}
+
+.wrapper {
+  transition: filter 0.5s;
+}
+
+.blurred {
+  pointer-events: none;
+  filter: blur(3px);
+}
