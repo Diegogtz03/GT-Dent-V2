@@ -49,7 +49,27 @@ export async function getPatientsByDate(cookie, date) {
   return patients.patients;
 }
 
-// GET PATIENT RECORD
 
+// GET PATIENT RECORD/INFO
+export async function getPatientRecord(cookie, patientId) {
+  const data = JSON.parse(cookie);
 
-// GET PATIENT ODONTOGRAM
+  var myFormData = new FormData();
+  myFormData.append("patientId", patientId);
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/records/getPatientRecord`, {
+    method: 'POST',
+    body: myFormData,
+    headers: {
+      'Authorization': `Bearer ${data.token}`
+    }
+  });
+
+  if (res.status == 401 || res.status == 400) {
+    return {};
+  }
+
+  const result = JSON.parse(await res.text());
+  
+  return result;
+}

@@ -3,12 +3,15 @@ import CustomButton from '../CustomButton/CustomButton';
 import { useState } from 'react';
 import { getPatientsByName, getPatientsByDate } from '../../api/retrievalAPI';
 import { getCookie } from '@/utils/cookies';
+import { palette } from '@mui/system';
+import { DatePicker } from '@mui/x-date-pickers';
 
 function SearchBar({ setPatients }) {
   const [searchType, setSearchType] = useState(0); // 0 = name, 1 = date
   const [searchValue, setSearchValue] = useState('');
   const [searchDate, setSearchDate] = useState('');
   const [storedPatients, setStoredPatients] = useState([]);
+  const [calendarViewIsOpen, setCalendarViewIsOpen] = useState(false);
 
   const resetValues = () => {
     setSearchValue('');
@@ -104,21 +107,34 @@ function SearchBar({ setPatients }) {
               }
             />
           ) : (
-            <input 
-              className={styles.inputStyle} 
-              placeholder="Fecha" 
-              type="date"
-              value={searchDate}
-              onChange={e => {
-                setSearchDate(e.target.value);
-                search(e.target.value);
-                // SET LOADING
-              }}
-            />
+            <div className={styles.datepicker} onClick={() => !calendarViewIsOpen && setCalendarViewIsOpen(true)}>
+              <DatePicker
+                className={styles.inputStyle}
+                value={searchDate}
+                views={['year', 'month', 'day']}
+                onChange={(newDate) => {
+                  setSearchDate(newDate)
+                }}
+                onAccept={(newDate) => {
+                  const date = new Date(newDate.$d).toISOString()
+                  setCalendarViewIsOpen(false);
+                  search(date);
+                }}
+                openTo='year'
+                onClose={() => {
+                  setCalendarViewIsOpen(false);
+                }}
+                open={calendarViewIsOpen}
+                sx={{ 
+                  border: 'text.secondary' 
+                }}
+              />
+            </div>
+
           )}
         </div>
         <div className={styles.clearBtnWrapper}>
-          <button className={`${styles.clearBtn} ${searchValue == '' ? styles.hidden : ''}`} onClick={() => resetValues()}>
+          <button className={`${styles.clearBtn} ${searchValue == '' && searchDate == '' ? styles.hidden : ''}`} onClick={() => resetValues()}>
             ⓧ
           </button>
         </div>

@@ -8,6 +8,8 @@ import NewPatientModal from "@/components/NewPatientModal/NewPatientModal";
 import { verifyUser } from "@/api/authAPI";
 import { Julius_Sans_One } from 'next/font/google'
 import { useState } from 'react';
+import PatientRecordModal from '@/components/PatientRecordModal/PatientRecordModal';
+import PrescriptionModal from '@/components/PrescriptionModal/PrescriptionModal';
 
 const julis = Julius_Sans_One({ weight: '400', subsets: ['latin'] })
 
@@ -47,6 +49,7 @@ function Dashboard() {
   const [activeModal, setActiveModal] = useState(false);
   const [modalClass, setModalClass] = useState('');
   const [blurredState, setBlurredState] = useState('');
+  const [patientId, setPatientId] = useState(null);
 
   let modal;
   
@@ -70,6 +73,10 @@ function Dashboard() {
 
   if (activeModalId === 0) {
     modal = (<NewPatientModal secondaryClassName={modalClass} showModal={showModal} />);
+  } else if (activeModalId === 1) {
+    modal = (<PatientRecordModal secondaryClassName={modalClass} showModal={showModal} patientId={patientId} />);
+  } else {
+    modal = (<PrescriptionModal secondaryClassName={modalClass} showModal={showModal} />);
   }
 
   return (
@@ -88,7 +95,7 @@ function Dashboard() {
           <SearchBar setPatients={setPatients} />
 
           { patients.length != 0 ?
-            <ResultsTable patients={patients} />
+            <ResultsTable patients={patients} showModal={showModal} setPatientId={setPatientId} />
             :
             ''
           }

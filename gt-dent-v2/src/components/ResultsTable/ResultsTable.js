@@ -1,6 +1,6 @@
 import styles from './ResultsTable.module.css';
 
-function ResultsTable({ patients }) {
+function ResultsTable({ patients, showModal, setPatientId }) {
   const formatBirthday = (birthday) => {
     const date = new Date(birthday);
 
@@ -30,11 +30,16 @@ function ResultsTable({ patients }) {
     return age;
   }
 
+  const handlePatientClick = (patientId) => {
+    setPatientId(patientId);
+    showModal(true, 1);
+  }
+
   return (
     <div className={styles.wrapper}>
       {patients.map((patient) => {
         return (
-          <button className={styles.patientBtn} key={patient.id}>
+          <button className={styles.patientBtn} key={patient.id} onClick={() => handlePatientClick(patient.id)}>
             <div className={styles.patientBtnContent}>
               <h3 className={styles.patientName}>{patient.name}</h3>
               <div className={styles.separator} />

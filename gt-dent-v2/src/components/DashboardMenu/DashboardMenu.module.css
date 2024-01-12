@@ -1,0 +1,93 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  padding-left: 18px;
+  align-items: center;
+}
+
+.logoImg {
+  margin-top: 9px;
+}
+
+.h1Tag {
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.headerButtons {
+  display: grid;
+  grid-template-columns: min-content min-content min-content;
+  align-items: center;
+  column-gap: 1.5em;
+  margin-right: 2em;
+  justify-content: right;
+}
+
+.userButtonWrapper {
+  position: relative;
+}
+
+.userTooltip {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+
+  background-color: #C0C0C0;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #D9D9D9;
+  border-radius: 20px;
+
+  width: 10em;
+  right: -55%;
+  top: 100%;
+
+  transition: all 0.5s;
+  z-index: 10;
+}
+
+.userTooltip::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;        
+  right: 2%;
+  top: 0;
+  border: 15px solid transparent;
+  border-top: 0;
+  border-bottom: 15px solid #D9D9D9;
+  transform: translate(-50%, calc(-100% - 5px));
+}
+
+.userButtonWrapper:hover .userTooltip, 
+.userTooltip:hover {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.textButton {
+  color: black;
+  font-size: 1.5em;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.username {
+  margin-top: 5px;
+  color: #3c85d3;
+  font-size: 1.5em;
+  margin-left: 8px;
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .headerTitle {
+    display: none;
+  }
+
+  .logoImg {
+    width: 80px;
+    height: 70px;
+  }
+}

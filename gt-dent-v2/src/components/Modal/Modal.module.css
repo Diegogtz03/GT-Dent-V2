@@ -1,0 +1,71 @@
+.wrapper {
+  position: absolute;
+  background: #1B1B1B;
+  color: black;
+  border-radius: 15px;
+  text-align: center;
+  width: 40vw;
+  min-width: fit-content;
+  height: fit-content;
+  max-width: 50vw;
+  max-height: 90vh;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+  box-shadow: 0px 0px 20px 2px rgba(255, 255, 255, 0.396);
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: all 0.5s;
+  
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  overflow: hidden;
+}
+
+.noiseWrapper {
+  position: absolute;
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  background-image: url(/noise.png);
+  z-index: -1;
+}
+
+.visible {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  align-items: center;
+  text-align: center;
+  font-size: 1.8rem;
+  padding-right: 5px;
+  padding-top: 5px;
+
+  color: white;
+
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.closeBtn {
+  position: absolute;
+  right: 5px;
+  top: 7px;
+  margin: 0;
+  padding-right: 15px;
+  font-size: 20px;
+  color: gray;
+}
+
+.overflowContent {
+  overflow-y: hidden;
+}

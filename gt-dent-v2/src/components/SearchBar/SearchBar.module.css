@@ -10,6 +10,15 @@
   padding-right: 0.5rem;
 }
 
+.datepicker fieldset {
+  border: none !important;
+}
+
+.datepicker div {
+  font-size: 1.3rem;
+  color: gray;
+}
+
 .typeBtn {
   display: flex;
   border-radius: 50%;
@@ -20,8 +29,8 @@
 }
 
 .btn {
-  margin-top: unset;
-  margin-bottom: unset;
+  margin-top: unset !important;
+  margin-bottom: unset !important;
 }
 
 .inputStyle {
