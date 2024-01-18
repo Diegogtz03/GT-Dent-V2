@@ -6,10 +6,8 @@ import { getCookie } from '@/utils/cookies';
 import { palette } from '@mui/system';
 import { DatePicker } from '@mui/x-date-pickers';
 
-function SearchBar({ setPatients }) {
+function SearchBar({ searchValue, setSearchValue, searchDate, setSearchDate, setPatients }) {
   const [searchType, setSearchType] = useState(0); // 0 = name, 1 = date
-  const [searchValue, setSearchValue] = useState('');
-  const [searchDate, setSearchDate] = useState('');
   const [storedPatients, setStoredPatients] = useState([]);
   const [calendarViewIsOpen, setCalendarViewIsOpen] = useState(false);
 

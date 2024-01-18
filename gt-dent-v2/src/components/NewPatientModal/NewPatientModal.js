@@ -4,11 +4,11 @@ import Image from 'next/image';
 import GlowBtn from '../GlowBtn/GlowBtn';
 import { DatePicker } from '@mui/x-date-pickers';
 import { useState } from 'react';
-import { registerPatient } from '@/api/patientInfoAPI';
+import { registerPatient, toIsoString } from '@/api/patientInfoAPI';
 import { getCookie } from '@/utils/cookies';
 import { useRouter } from 'next/navigation';
 
-function NewPatientModal({ secondaryClassName, showModal }) {
+function NewPatientModal({ secondaryClassName, showModal, setPatientId, showToast }) {
   const [name, setName] = useState('')
   const [birthdate, setBirthdate] = useState('')
   const [phone, setPhone] = useState('')
@@ -30,39 +30,41 @@ function NewPatientModal({ secondaryClassName, showModal }) {
     if (!checkForm()) return;
 
     const cookie = getCookie('token', document);
-    const date = new Date(birthdate);
+    var date = new Date(birthdate);
 
-    if (cookie == null) {
+    if (cookie == null || cookie.expiresIn < Date.now() ) {
       router.push('/login')
       return;
     }
 
-    const data = await registerPatient(cookie, name, date.toISOString(), phone);
+    const data = await registerPatient(cookie, name, toIsoString(date), phone);
 
     if (data.patientId == -1) {
-      alert(data.message);
-      // SHOW TOAST
+      showToast(data.message, 2)
     } else {
-      alert(data.message);
-      console.log(data.patientId)
-      // SHOW TOAST
+      showToast("Paciente registrado", 1)
+      setPatientId(data.patientId);
       showModal(false);
+
+      setTimeout(() => {
+        showModal(true, 1);
+      }, 250);
     }
   }
 
   const checkForm = () => {
     if (name == '') {
-      alert("Ingrese un nombre");
+      showToast("Ingrese un nombre", 3)
       return false;
     }
 
     if (birthdate == '') {
-      alert("Ingrese una fecha de nacimiento");
+      showToast("Ingrese una fecha de nacimiento", 3)
       return false;
     }
 
     if (phone == '') {
-      alert("Ingrese un número de teléfono");
+      showToast("Ingrese un número de teléfono", 3)
       return false;
     }
 

@@ -1,0 +1,146 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  max-width: 550px;
+  margin-left: 15px;
+}
+
+.diagnosticWrapper {
+  position: relative;
+  color: white;
+}
+
+.diagnosticContent {
+  position: relative;
+  z-index: 2;
+  background: #8A8A8A;
+  border-radius: 15px;
+  padding-bottom: 10px;
+}
+
+.diagnosticWrapper h2 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.diagnosticNumber {
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: absolute;
+  top: 0;
+  background: white;
+  border-radius: 15px 0px 15px 0px;
+}
+
+.diagnosticNumber h3 {
+  color: gray;
+  font-size: 30px;
+}
+
+.diagnosticInput {
+  padding: 5px;
+  color: black;
+  height: 300px;
+  width: 90%;
+  font-size: larger;
+  background: #8A8A8A;
+  resize: none;
+
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.backBtn, .fwdBtn {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  background-color: white;
+  top: 45%;
+  height: fit-content;
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+.backBtn {
+  padding-left: 0px;
+  border-radius: 10px 0px 0px 10px;
+  left: 0;
+
+  transition: all 0.3s ease;
+}
+
+.backBtn:hover {
+  left: -35px;
+}
+
+.backBtn:active {
+  left: -30px;
+}
+
+.backBtnActive {
+  left: -30px;
+  pointer-events: all;
+}
+
+.fwdBtn {
+  padding-right: 0px;
+  border-radius: 0px 10px 10px 0px;
+  right: 0;
+
+  transition: all 0.3s ease;
+}
+
+.fwdBtn:hover {
+  right: -35px;
+}
+
+.fwdBtn:active {
+  right: -30px;
+}
+
+.fwdBtnActive {
+  right: -30px;
+  pointer-events: all;
+}
+
+.rotatedImage {
+  transform: rotate(180deg);
+}
+
+.allergiesWrapper, .nextAppWrapper {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  align-items: center;
+  background-color: #8A8A8A;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.allergiesInput, .nextAppInput {
+  width: 100%;
+  font-size: larger;
+  padding: 5px;
+  background-color: #8A8A8A;
+  color: black;
+  resize: none;
+
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}

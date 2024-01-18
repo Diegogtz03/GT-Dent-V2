@@ -1,0 +1,46 @@
+.container {
+  width: fit-content;
+}
+
+.toast {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: fit-content;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+
+  box-shadow: 0px 0px 15px 0px #8f96a0dd;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.message {
+  font-family:  "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.hidden {
+  top: -100px;
+}
+
+.success {
+  background: rgb(32, 179, 76);
+}
+
+.error {
+  background-color: #d9534f;
+}
+
+.warning {
+  background-color: #f0ad4e;
+}
+
+.info {
+  background-color: #5bc0de;
+}

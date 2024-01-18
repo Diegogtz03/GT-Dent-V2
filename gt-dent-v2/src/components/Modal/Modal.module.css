@@ -43,7 +43,7 @@
 
 .header {
   display: grid;
-  grid-template-columns: 1fr min-content;
+  /* grid-template-columns: 1fr min-content; */
   align-items: center;
   text-align: center;
   font-size: 1.8rem;
@@ -59,7 +59,7 @@
 .closeBtn {
   position: absolute;
   right: 5px;
-  top: 7px;
+  top: 8px;
   margin: 0;
   padding-right: 15px;
   font-size: 20px;
@@ -68,4 +68,10 @@
 
 .overflowContent {
   overflow-y: hidden;
+}
+
+.patientName {
+  padding-top: 5px;
+  color: gray;
+  font-size: 1.5rem;
 }

@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import styles from '../styles/landing.module.css'
+import FloatingTeeth from '../components/FloatingTeeth/FloatingTeeth'
+import Toast from '@/components/Toast/Toast';
+import toastStyles from '@/components/Toast/Toast.module.css';
 import { Julius_Sans_One } from 'next/font/google'
 import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/router';
 import { login } from '../api/authAPI'
 import { verifyUser } from '../api/authAPI'
-import FloatingTeeth from '../components/FloatingTeeth/FloatingTeeth'
-
 const julis = Julius_Sans_One({ weight: '400', subsets: ['latin'] })
 
 function normalize(value, min, max, newMin, newMax) {
@@ -73,21 +74,47 @@ export default function Login() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [toastStyle, setToastStyle] = useState(toastStyles.hidden);
+  const [toastType, setToastType] = useState(0);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const showToast = (message, type) => {
+    if (toastStyle != null) {
+      setToastStyle(toastStyles.toast);
+      setMessage(message);
+      setToastStyle(null);
+      setToastType(type);
+      setTimeout(() => {
+        setToastStyle(toastStyles.hidden);
+      }, 3000);
+    } else {
+      setToastStyle(toastStyles.hidden);
+      setMessage(message);
+      setToastType(type);
+
+      setTimeout(() => {
+        setToastStyle(null);
+      }, 300);
+
+      setTimeout(() => {
+        setToastStyle(toastStyles.hidden);
+      }, 3000);
+    }
+  };
 
   const loginCheck = async () => {
     setLoading(prevState => !prevState);
     let data = await login(username, password);
 
     if (data.successLogin) {
-      setMessage(`${String.fromCharCode(8203)}`);
+      showToast(data.message, 1)
       var midnight = new Date();
       midnight.setHours(23,59,59,0);
       document.cookie = `token=${data.cookie};expires=${midnight.toUTCString()};path=/`
       router.push("/dashboard");
     } else {
-      setMessage('Usuario o contraseña incorrectos');
+      showToast(data.message, 2)
     }
 
     setLoading(prevState => !prevState);
@@ -95,6 +122,8 @@ export default function Login() {
 
   return (
     <main className={styles.main}>
+      <Toast message={message} type={toastType} secondaryClassName={toastStyle} />
+
       <title>Login</title>
       <DottedBackground className={styles.backgroundCanvas} />
       <FloatingTeeth />
@@ -119,6 +148,7 @@ export default function Login() {
               id="username" 
               name="username"
               value={username}
+              disabled={loading}
               onChange={e => {
                 setUsername(e.target.value);
               }}
@@ -131,12 +161,17 @@ export default function Login() {
               id="password" 
               name="password"
               value={password}
+              disabled={loading}
               onChange={e => {
                 setPassword(e.target.value);
               }}
             />
 
-            <button className={styles.loginBtn} type="submit">Iniciar Sesión</button>
+            <button 
+              className={styles.loginBtn} 
+              disabled={loading}
+              type="submit">Iniciar Sesión
+            </button>
           </form>
         </div>
       </div>

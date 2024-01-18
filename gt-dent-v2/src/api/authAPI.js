@@ -12,13 +12,15 @@ export async function login(username, password) {
 
   if (!data.success) {
     return {
-      successLogin: false
+      successLogin: false,
+      message: data.error
     }
   }
 
   return {
     successLogin: data.success,
-    cookie: `{"id": ${data.doctorId},"username": "${data.username}","token": "${data.token}"}`
+    cookie: `{"id": ${data.doctorId},"username": "${data.username}","token": "${data.token}"}`,
+    message: "Inicio exitoso"
   };
 }
 
