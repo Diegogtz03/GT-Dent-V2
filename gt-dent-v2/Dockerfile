@@ -1,6 +1,6 @@
 FROM node:20.10.0-alpine
 
-WORKDIR /Kofy-Back
+WORKDIR /gt-dent-v2
 
 COPY package*.json ./
 
