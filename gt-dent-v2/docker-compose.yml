@@ -1,0 +1,15 @@
+version: "3"
+services:
+  gtDent:
+    container_name: gtDent
+    build: .
+    restart: always
+    env_file:
+      - .env.local
+    networks:
+      - router-network
+
+
+networks:
+  router-network:
+    external: true
