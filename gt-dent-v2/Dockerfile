@@ -4,7 +4,7 @@ WORKDIR /gt-dent-v2
 
 COPY package*.json ./
 
-RUN npm install
+RUN sudo npm install --verbose
 
 COPY . .
 
