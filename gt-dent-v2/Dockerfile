@@ -1,4 +1,4 @@
-FROM node:20.10.0-alpine
+FROM node:20.10.0
 
 WORKDIR /GT-Dent-V2/gt-dent-v2
 
