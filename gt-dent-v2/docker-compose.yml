@@ -6,7 +6,6 @@ services:
     restart: always
     env_file:
       - .env.local
-    network_mode: host
     networks:
       - router-network
       - app-network
