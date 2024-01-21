@@ -1,10 +1,10 @@
-FROM node:20.10.0
+FROM node:18-alpine
 
 WORKDIR /GT-Dent-V2/gt-dent-v2
 
 COPY package*.json ./
 
-RUN npm install --unsafe-perm
+RUN npm install --unsafe-perm --verbose
 
 COPY . .
 
