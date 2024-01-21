@@ -6,6 +6,7 @@ services:
     restart: always
     env_file:
       - .env.local
+    network_mode: host
     networks:
       - router-network
       - app-network
@@ -14,5 +15,5 @@ services:
 networks:
   router-network:
     external: true
-  app-network:
-    driver: bridge  
+  host:
+    external: true
