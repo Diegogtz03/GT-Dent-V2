@@ -8,11 +8,11 @@ services:
       - .env.local
     networks:
       - router-network
-      - host
+      - app-network
 
 
 networks:
   router-network:
     external: true
-  host:
-    external: true
+  app-network:
+    driver: bridge  
