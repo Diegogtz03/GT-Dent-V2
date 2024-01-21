@@ -1,6 +1,6 @@
 FROM node:20.10.0-alpine
 
-WORKDIR /gt-dent-v2
+WORKDIR /GT-Dent-V2/gt-dent-v2
 
 COPY package*.json ./
 
