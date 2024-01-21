@@ -4,7 +4,7 @@ WORKDIR /gt-dent-v2
 
 COPY package*.json ./
 
-RUN npm install -- verbose
+RUN npm ci
 
 COPY . .
 
