@@ -4,11 +4,7 @@ WORKDIR /GT-Dent-V2/gt-dent-v2
 
 COPY package*.json ./
 
-RUN npm config set registry http://registry.npmjs.org/
-
-RUN npm cache clean --force
-
-RUN npm install --verbose
+RUN npm install
 
 COPY . .
 
