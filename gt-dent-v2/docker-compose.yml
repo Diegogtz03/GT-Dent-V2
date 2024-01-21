@@ -8,7 +8,6 @@ services:
       - .env.local
     networks:
       - router-network
-      - app-network
 
 
 networks:
