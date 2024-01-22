@@ -4,7 +4,9 @@ WORKDIR /GT-Dent-V2/gt-dent-v2
 
 COPY package*.json ./
 
-RUN npm install
+RUN ping registry.npmjs.org
+
+RUN npm install --verbose
 
 COPY . .
 
