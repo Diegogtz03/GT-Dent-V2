@@ -8,11 +8,8 @@ services:
       - .env.local
     networks:
       - router-network
-      - host
 
 
 networks:
   router-network:
-    external: true
-  host:
     external: true
