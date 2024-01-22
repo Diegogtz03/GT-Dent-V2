@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:18.17.0-alpine
 
 WORKDIR /GT-Dent-V2/gt-dent-v2
 
@@ -6,11 +6,9 @@ COPY package*.json ./
 
 COPY node_modules ./node_modules
 
-# RUN npm install --verbose
+RUN npm install
 
 COPY . .
-
-# RUN npx prisma generate
 
 CMD ["sh", "-c", "npm run build && npm start"]
 
