@@ -6,7 +6,7 @@ COPY package*.json ./
 
 COPY node_modules ./node_modules
 
-RUN npm install --verbose
+# RUN npm install --verbose
 
 COPY . .
 
