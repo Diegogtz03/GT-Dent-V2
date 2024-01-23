@@ -8,11 +8,7 @@ services:
       - .env.local
     networks:
       - router-network
-      - mynetwork
-
 
 networks:
   router-network:
     external: true
-  mynetwork:
-    driver: bridge
