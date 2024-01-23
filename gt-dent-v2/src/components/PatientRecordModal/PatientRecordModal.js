@@ -82,7 +82,6 @@ function PatientRecordModal({ secondaryClassName, showModal, patientId, setPatie
   const handlePrescriptionBtn = () => {
     if (checkForm()) {
       handleSaveBtn();
-      showModal(false);
       setPatientName(patientData.patient.name);
       setTimeout(() => {
         showModal(true, 2);
