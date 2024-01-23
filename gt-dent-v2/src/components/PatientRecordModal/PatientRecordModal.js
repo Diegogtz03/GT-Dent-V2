@@ -79,14 +79,12 @@ function PatientRecordModal({ secondaryClassName, showModal, patientId, setPatie
     setModalType(e.target.value);
   }
 
-  const handlePrescriptionBtn = () => {
-    if (checkForm()) {
-      handleSaveBtn();
-      setPatientName(patientData.patient.name);
-      setTimeout(() => {
-        showModal(true, 2);
-      }, 300);
-    }
+  const handlePrescriptionBtn = async () => {
+    await handleSaveBtn();
+    setPatientName(patientData.patient.name);
+    setTimeout(() => {
+      showModal(true, 2);
+    }, 300);
   }
 
   return (
