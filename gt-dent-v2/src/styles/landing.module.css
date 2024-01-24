@@ -74,7 +74,6 @@
   width: 100%;
   max-width: 400px;
   color: white;
-  background: #3b3b3b;
 }
 
 .loginBtn {
@@ -114,6 +113,8 @@
   padding: 0.8rem;
   font-size: 1rem;
   width: 80%;
+  background: #3b3b3b;
+  color: white;
 }
 
 @media (max-width: 768px) {
