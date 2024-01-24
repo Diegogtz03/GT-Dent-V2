@@ -1,3 +1,7 @@
+.wrapper {
+  overflow-y: scroll !important;
+}
+
 .wrapper h1 {
   font-size: 2rem;
   margin-bottom: 1rem;

@@ -103,7 +103,7 @@ function PrescriptionModal({ secondaryClassName, showModal, prescriptionName = '
   return (
     <Modal title={'Receta'} secondaryClassName={secondaryClassName} showModal={showModal} customCloseHandler={handleCloseBtn}>
       <div className={styles.wrapper}>
-      <div className={styles.form}>
+        <div className={styles.form}>
           <div className={styles.formGroup}>
             <Image src="/icons/user.svg" width={40} height={40} alt="User Icon" />
             <input 
