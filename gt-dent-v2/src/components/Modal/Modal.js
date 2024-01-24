@@ -4,7 +4,7 @@ import { Julius_Sans_One } from 'next/font/google'
 
 const julis = Julius_Sans_One({ weight: '400', subsets: ['latin'] })
 
-function Modal({children, title, secondaryClassName = '', showModal, customStyle={}, patientName = '', customCloseHandler = null }) {
+function Modal({children, title, secondaryClassName = '', showModal, customStyle={}, patientName = '', customCloseHandler = null, notOverflow = false }) {
 
   return (
     <div className={`${styles.wrapper} ${secondaryClassName}`}>
@@ -18,7 +18,7 @@ function Modal({children, title, secondaryClassName = '', showModal, customStyle
       <CustomButton className={styles.closeBtn} onclick={() => customCloseHandler == null ? showModal(false) : customCloseHandler()}>
         ⓧ
       </CustomButton>
-      <div className={styles.overflowContent} style={customStyle}>
+      <div className={!notOverflow ? styles.overflowContent : styles.scrollContent} style={customStyle}>
         {children}
       </div>
     </div>

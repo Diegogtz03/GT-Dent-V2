@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.headerTitle {
+  color: white;
+}
+
 .logoImg {
   margin-top: 9px;
 }

@@ -70,6 +70,10 @@
   overflow-y: hidden;
 }
 
+.scrollContent {
+  overflow-y: scroll;
+}
+
 .patientName {
   padding-top: 5px;
   color: gray;
