@@ -6,7 +6,7 @@ import { getCookie } from '@/utils/cookies';
 import { palette } from '@mui/system';
 import { DatePicker } from '@mui/x-date-pickers';
 
-function SearchBar({ searchValue, setSearchValue, searchDate, setSearchDate, setPatients }) {
+function SearchBar({ searchValue, setSearchValue, searchDate, setSearchDate, setPatients, setIsLoading }) {
   const [searchType, setSearchType] = useState(0); // 0 = name, 1 = date
   const [storedPatients, setStoredPatients] = useState([]);
   const [calendarViewIsOpen, setCalendarViewIsOpen] = useState(false);
@@ -32,15 +32,20 @@ function SearchBar({ searchValue, setSearchValue, searchDate, setSearchDate, set
       const cookie = getCookie('token', document);
 
       if (searchText.length === 1 || searchText.length === 2) {
+        setIsLoading(true);
         getPatientsByName(cookie, searchText, 0).then((res) => {
           setPatients(res);
+          setIsLoading(false);
         });
       } else if (searchText.length == 3) {
+        setIsLoading(true);
         getPatientsByName(cookie, searchText, 1).then((res) => {
           setStoredPatients(res);
           setPatients(res);
+          setIsLoading(false);
         });
       } else {
+        setIsLoading(false);
         setPatients(storedPatients.filter((patient) => {
           return patient.name.toLowerCase().includes(searchText.toLowerCase());
         }));
@@ -55,6 +60,7 @@ function SearchBar({ searchValue, setSearchValue, searchDate, setSearchDate, set
 
     if (searchText == '') {
       resetValues();
+      setIsLoading(false);
     }
   }
 

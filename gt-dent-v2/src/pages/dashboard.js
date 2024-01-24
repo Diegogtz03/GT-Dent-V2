@@ -9,6 +9,7 @@ import PatientRecordModal from '@/components/PatientRecordModal/PatientRecordMod
 import PrescriptionModal from '@/components/PrescriptionModal/PrescriptionModal';
 import Toast from '@/components/Toast/Toast';
 import toastStyles from '@/components/Toast/Toast.module.css';
+import LoadingIndicator from '@/components/LoadingIndicator/LoadingIndicator';
 import { verifyUser } from "@/api/authAPI";
 import { Julius_Sans_One } from 'next/font/google'
 import { useState } from 'react';
@@ -53,6 +54,7 @@ function Dashboard() {
   const [blurredState, setBlurredState] = useState('');
   const [patientId, setPatientId] = useState(null);
   const [patientName, setPatientName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   // Search bar states
   const [searchValue, setSearchValue] = useState('');
@@ -131,9 +133,10 @@ function Dashboard() {
         <div className={`${styles.wrapper} ${blurredState}`}>
           <DashboardMenu showModal={showModal}  />
 
-          <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} searchDate={searchDate} setSearchDate={setSearchDate} setPatients={setPatients} />
+          <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} searchDate={searchDate} setSearchDate={setSearchDate} setPatients={setPatients} setIsLoading={setIsLoading} />
 
           { patients.length != 0 &&
+            { isLoading } ? <LoadingIndicator /> :
             <ResultsTable patients={patients} showModal={showModal} setPatientId={setPatientId} />
           }
         </div>
