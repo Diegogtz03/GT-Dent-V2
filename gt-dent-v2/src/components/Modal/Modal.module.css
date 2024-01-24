@@ -72,6 +72,11 @@
 
 .scrollContent {
   overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.scrollContent::-webkit-scrollbar {
+  display: none;
 }
 
 .patientName {

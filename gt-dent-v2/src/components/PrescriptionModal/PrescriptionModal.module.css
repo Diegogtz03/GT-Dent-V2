@@ -1,5 +1,10 @@
 .wrapper {
   overflow-y: scroll !important;
+  scrollbar-width: none;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .wrapper h1 {
