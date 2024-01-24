@@ -32,20 +32,20 @@ function SearchBar({ searchValue, setSearchValue, searchDate, setSearchDate, set
       const cookie = getCookie('token', document);
 
       if (searchText.length === 1 || searchText.length === 2) {
-        setIsLoading(true);
+        setIsLoading((prevState) => true);
         getPatientsByName(cookie, searchText, 0).then((res) => {
           setPatients(res);
-          setIsLoading(false);
+          setIsLoading((prevState) => false);
         });
       } else if (searchText.length == 3) {
-        setIsLoading(true);
+        setIsLoading((prevState) => true);
         getPatientsByName(cookie, searchText, 1).then((res) => {
           setStoredPatients(res);
           setPatients(res);
-          setIsLoading(false);
+          setIsLoading((prevState) => false);
         });
       } else {
-        setIsLoading(false);
+        setIsLoading((prevState) => false);
         setPatients(storedPatients.filter((patient) => {
           return patient.name.toLowerCase().includes(searchText.toLowerCase());
         }));
