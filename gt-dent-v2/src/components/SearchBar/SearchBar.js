@@ -37,7 +37,6 @@ function SearchBar({ searchValue, setSearchValue, searchDate, setSearchDate, set
           setPatients(res);
           setIsLoading((prevState) => false);
         });
-        setIsLoading((prevState) => false);
       } else if (searchText.length == 3) {
         setIsLoading((prevState) => true);
         getPatientsByName(cookie, searchText, 1).then((res) => {
@@ -45,13 +44,11 @@ function SearchBar({ searchValue, setSearchValue, searchDate, setSearchDate, set
           setPatients(res);
           setIsLoading((prevState) => false);
         });
-        setIsLoading((prevState) => false);
       } else {
         setIsLoading((prevState) => false);
         setPatients(storedPatients.filter((patient) => {
           return patient.name.toLowerCase().includes(searchText.toLowerCase());
         }));
-        setIsLoading((prevState) => false);
       }
     } else {
       const cookie = getCookie('token', document);
