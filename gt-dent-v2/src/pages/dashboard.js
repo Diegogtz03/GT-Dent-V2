@@ -136,8 +136,7 @@ function Dashboard() {
           <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} searchDate={searchDate} setSearchDate={setSearchDate} setPatients={setPatients} setIsLoading={setIsLoading} />
 
           { patients.length != 0 &&
-            { isLoading } ? <LoadingIndicator /> :
-            <ResultsTable patients={patients} showModal={showModal} setPatientId={setPatientId} />
+            isLoading ? <LoadingIndicator /> : <ResultsTable patients={patients} showModal={showModal} setPatientId={setPatientId} />
           }
         </div>
       </main>
