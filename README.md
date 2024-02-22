@@ -1,7 +1,7 @@
 # GT-Dent-V2
 
 # GT-DENT
-GT-DENT is a Dental Patient Records App which came to be as a help for my parents' dental office. The original version was written to be a Java application, but due to updated, decided to migrate the app to a web version easy to update.
+GT-DENT is a Dental Patient Records App which came to be as a help for my parents' dental office. The original version was written to be a Java application, but due to updates, decided to migrate the app to a web version easy to update.
 
 ## Features
 - Reduce paper waste by transfering records to a digital platform
@@ -29,10 +29,14 @@ GT-DENT is a Dental Patient Records App which came to be as a help for my parent
 ![Patient Search](https://github.com/Diegogtz03/GT-Dent-V2/assets/65473367/8cdcaef2-a5d8-495a-a724-88712249e0fa)
 
 ### Registration
-![Registration]()
+![Registration](https://github.com/Diegogtz03/GT-Dent-V2/assets/65473367/7a8b387f-108a-44c6-8de4-635c3c847403)
+
 
 ### Records
-![Records]()
+![Records](https://github.com/Diegogtz03/GT-Dent-V2/assets/65473367/85d50c73-d7be-4b2e-a98e-801ae5bb2028)
+
 
 ### Prescriptions
-![Prescription]()
+![Prescription](https://github.com/Diegogtz03/GT-Dent-V2/assets/65473367/6336c73d-f5ef-49f3-8600-d621d28c9e7f)
+
+
