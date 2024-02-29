@@ -1,7 +1,7 @@
 import styles from './GlowBtn.module.css';
 import { useEffect } from 'react';
 
-function GlowBtn({ text, onClick }) {
+function GlowBtn({ text, onClick, disabled = false }) {
   // effect to track mouse position
 
   const handlePointerMove = (e) => {
@@ -27,7 +27,7 @@ function GlowBtn({ text, onClick }) {
   }, []);
 
   return (
-    <button className={styles.btn} onClick={onClick}>
+    <button className={styles.btn} onClick={onClick} disabled={disabled}>
       <span>{text}</span>
     </button>
   );

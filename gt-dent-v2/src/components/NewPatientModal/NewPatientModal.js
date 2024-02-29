@@ -7,12 +7,14 @@ import { useState } from 'react';
 import { registerPatient, toIsoString } from '@/api/patientInfoAPI';
 import { getCookie } from '@/utils/cookies';
 import { useRouter } from 'next/navigation';
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 
 function NewPatientModal({ secondaryClassName, showModal, setPatientId, showToast }) {
   const [name, setName] = useState('')
   const [birthdate, setBirthdate] = useState('')
   const [phone, setPhone] = useState('')
   const [calendarViewIsOpen, setCalendarViewIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
@@ -28,6 +30,8 @@ function NewPatientModal({ secondaryClassName, showModal, setPatientId, showToas
 
   const handleSubmit = async () => {
     if (!checkForm()) return;
+
+    setIsLoading(true);
 
     const cookie = getCookie('token', document);
     var date = new Date(birthdate);
@@ -50,6 +54,8 @@ function NewPatientModal({ secondaryClassName, showModal, setPatientId, showToas
         showModal(true, 1);
       }, 250);
     }
+
+    setIsLoading(false);
   }
 
   const checkForm = () => {
@@ -115,8 +121,12 @@ function NewPatientModal({ secondaryClassName, showModal, setPatientId, showToas
               onChange={(e) => setPhone(formatPhoneNumber(e.target.value))} 
             />
           </div>
+
+          {isLoading &&
+            <LoadingIndicator />
+          }
           
-          <GlowBtn text={"Registrar"} onClick={() => handleSubmit()} />
+          <GlowBtn text={"Registrar"} onClick={() => handleSubmit()} disabled={isLoading} />
         </div>
       </div>
     </Modal>
