@@ -47,9 +47,7 @@ export async function updatePatient(cookie, newPatient) {
   const data = JSON.parse(cookie);
 
   var newBirthday = new Date(newPatient.patient.birthday);
-  newPatient.patient.birthday = newBirthday.toISOString() // toIsoString(newBirthday);
-
-  // newBirthday.toISOString()
+  newPatient.patient.birthday = newBirthday.toISOString();
 
   var myFormData = new FormData();
   myFormData.append("updatedPatient", JSON.stringify(newPatient));

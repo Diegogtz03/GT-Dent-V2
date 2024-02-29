@@ -16,6 +16,7 @@ function PatientRecordModal({ secondaryClassName, showModal, patientId, setPatie
   const [modalType, setModalType] = useState(0);
   const [patientData, setPatientData] = useState(null);
   const [hasEdited, setHasEdited] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -52,6 +53,8 @@ function PatientRecordModal({ secondaryClassName, showModal, patientId, setPatie
 
   const handleSaveBtn = async () => {
     if (checkForm()) {
+      setIsLoading(true);
+
       const cookie = getCookie("token", document);
       const result = await updatePatient(cookie, patientData);
 
@@ -61,6 +64,8 @@ function PatientRecordModal({ secondaryClassName, showModal, patientId, setPatie
       } else {
         showToast(result.message, 2);
       }
+
+      setIsLoading(false);
     }
   }
 
@@ -121,7 +126,11 @@ function PatientRecordModal({ secondaryClassName, showModal, patientId, setPatie
           </CustomButton>
         </div>
 
-        <GlowBtn text={'Guardar'} onClick={handleSaveBtn} />
+        {isLoading && 
+          <LoadingIndicator />
+        }
+
+        <GlowBtn text={'Guardar'} onClick={handleSaveBtn} disabled={isLoading} />
       </div>
     </Modal>
   )
