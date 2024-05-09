@@ -3,6 +3,7 @@ import styles from './ResultsTable.module.css';
 function ResultsTable({ patients, showModal, setPatientId }) {
   const formatBirthday = (birthday) => {
     const date = new Date(birthday);
+    date.setDate(date.getDate() + 1);
 
     const months = [
       "ene", "feb", "mar", "abr", "may", "jun",
@@ -10,7 +11,7 @@ function ResultsTable({ patients, showModal, setPatientId }) {
       "dic"
     ];
 
-    return `${date.getDate() + 1} / ${months[date.getMonth()]} / ${date.getFullYear()}`;
+    return `${date.getDate()} / ${months[date.getMonth()]} / ${date.getFullYear()}`;
   }
 
   const getAge = (birthday) => {
