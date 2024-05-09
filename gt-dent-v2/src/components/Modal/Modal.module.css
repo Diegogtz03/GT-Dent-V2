@@ -67,7 +67,9 @@
 }
 
 .overflowContent {
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 .scrollContent {
